@@ -1,6 +1,6 @@
 <script lang="ts">
   import { groupedTimezones } from '$lib/constants/timezones';
-  import dayjs from 'dayjs';
+  // import dayjs from 'dayjs';
   import classNames from 'classnames';
 
   let searchValue = '';
@@ -63,11 +63,11 @@
           <div
             class="absolute mt-1 max-h-[300px] w-full overflow-y-auto rounded border border-gray-300"
           >
-            {#each filteredTimezones as [region, cities], i}
+            {#each filteredTimezones as [region, cities] (region)}
               {#if cities.length > 0}
                 <div>
                   <div class="sticky top-0 bg-gray-200 p-2 font-semibold">{region}</div>
-                  {#each cities as city, i}
+                  {#each cities as city}
                     <div
                       class={classNames('cursor-pointer py-2 px-4 hover:bg-blue-100', {
                         'bg-blue-300': selectedTimezone === `${region}/${city}`,
