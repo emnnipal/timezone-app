@@ -1,6 +1,7 @@
 <script lang="ts">
   import { groupedTimezones } from '$lib/constants/timezones';
   import { clickOutside } from '$lib/helpers/svelte-helpers';
+  // import autoAnimate from '@formkit/auto-animate';
   // import dayjs from 'dayjs';
   import classNames from 'classnames';
 
@@ -29,7 +30,7 @@
         }
       }
       filteredTimezones = result as typeof groupedTimezones;
-    }, 150);
+    }, 250);
   }
 </script>
 
@@ -62,33 +63,42 @@
           bind:value={searchValue}
         />
 
-        {#if showOptions}
-          <div
-            class="absolute mt-1 max-h-[300px] w-full overflow-y-auto rounded border border-gray-300"
-          >
-            {#each filteredTimezones as [region, cities] (region)}
-              {#if cities.length > 0}
-                <div>
-                  <div class="sticky top-0 bg-gray-200 p-2 font-semibold">{region}</div>
-                  {#each cities as city}
-                    <div
-                      class={classNames('cursor-pointer py-2 px-4 hover:bg-blue-100', {
+        <div
+          class={classNames(
+            'absolute mt-1 max-h-[300px] w-full overflow-y-auto rounded border border-gray-300',
+            'transition-all duration-200 ease-in-out',
+            {
+              'opacity: 100': showOptions,
+              'opacity-0': !showOptions,
+            }
+          )}
+        >
+          {#each filteredTimezones as [region, cities] (region)}
+            {#if cities.length > 0}
+              <div>
+                <div class="sticky top-0 bg-gray-200 p-2 font-semibold">{region}</div>
+                {#each cities as city}
+                  <div
+                    class={classNames(
+                      'cursor-pointer py-2 px-4 hover:bg-blue-100',
+                      'transition-all duration-200 ease-in-out',
+                      {
                         'bg-blue-300': selectedTimezone === `${region}/${city}`,
-                      })}
-                      on:click={() => handleClick(region, city)}
-                      on:keydown={() => handleClick(region, city)}
-                    >
-                      {city}
-                    </div>
-                  {/each}
-                </div>
-              {/if}
-            {/each}
-            {#if filteredTimezones.length === 0}
-              <div class="bg-white p-2 font-semibold">No results</div>
+                      }
+                    )}
+                    on:click={() => handleClick(region, city)}
+                    on:keydown={() => handleClick(region, city)}
+                  >
+                    {city}
+                  </div>
+                {/each}
+              </div>
             {/if}
-          </div>
-        {/if}
+          {/each}
+          {#if filteredTimezones.length === 0}
+            <div class="bg-white p-2 font-semibold">No results</div>
+          {/if}
+        </div>
       </div>
     </div>
     <div>
