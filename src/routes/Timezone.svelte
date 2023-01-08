@@ -1,5 +1,6 @@
 <script lang="ts">
   import { groupedTimezones } from '$lib/constants/timezones';
+  import { clickOutside } from '$lib/helpers/svelte-helpers';
   // import dayjs from 'dayjs';
   import classNames from 'classnames';
 
@@ -10,6 +11,7 @@
   let selectedTimezone = '';
 
   const handleClick = (region: string, city: string) => {
+    showOptions = false;
     searchValue = city;
     selectedTimezone = `${region}/${city}`;
   };
@@ -44,15 +46,16 @@
 
       <div
         class="relative ml-2"
-        on:click={() => {
-          showOptions = !showOptions;
-        }}
-        on:keyup={() => {
-          // showOptions = !showOptions;
+        use:clickOutside
+        on:click_outside={() => {
+          showOptions = false;
         }}
       >
         <input
           on:input={() => {
+            showOptions = true;
+          }}
+          on:click={() => {
             showOptions = true;
           }}
           class="min-w-[275px] rounded border border-gray-400 p-2"
