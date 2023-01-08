@@ -1,13 +1,15 @@
 <script>
   import './styles.css';
+  import dayjs from 'dayjs';
+  import utc from 'dayjs/plugin/utc';
+  import timezone from 'dayjs/plugin/timezone';
+
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
 </script>
 
-<div class="app">
+<div class="svelte-app ">
   <main>
     <slot />
   </main>
-
-  <footer>
-    <p>by emnnipal</p>
-  </footer>
 </div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Timezone from './Timezone.svelte';
 </script>
 
 <svelte:head>
@@ -6,6 +7,4 @@
   <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-  <div class="py-9 font-normal text-blue-600">Timezone - App</div>
-</section>
+<Timezone />

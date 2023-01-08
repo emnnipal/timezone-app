@@ -61,8 +61,7 @@ body {
   width: 100vw;
 }
 
-:root {
-  display: grid;
+.svelte-app {
   height: 100%;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;

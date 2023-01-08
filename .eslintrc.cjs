@@ -17,4 +17,8 @@ module.exports = {
     es2017: true,
     node: true,
   },
+  rules: {
+    'a11y-click-events-have-key-events': 'off',
+    'no-undef': 'off',
+  },
 };
