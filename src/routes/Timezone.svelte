@@ -4,6 +4,7 @@
   // import autoAnimate from '@formkit/auto-animate';
   // import dayjs from 'dayjs';
   import classNames from 'classnames';
+  import appLogo from '$lib/images/app-logo.svg';
 
   let searchValue = '';
   let showOptions = false;
@@ -35,10 +36,11 @@
 </script>
 
 <section class="flex flex-col items-center gap-4">
+  <!-- TODO: move to layout -->
   <div
     class="flex w-full justify-center border border-gray-200 py-3 text-lg font-semibold shadow-md"
   >
-    Timezone - App
+    <img src={appLogo} alt="SvelteKit" width="25" class="mr-3" /> Timezone App
   </div>
   <div class="flex flex-col gap-5">
     <!-- TODO: create reusable component -->
@@ -66,10 +68,8 @@
         <div
           class={classNames(
             'absolute mt-1 max-h-[300px] w-full overflow-y-auto rounded border border-gray-300',
-            'transition-all duration-200 ease-in-out',
             {
-              'opacity: 100': showOptions,
-              'opacity-0': !showOptions,
+              hidden: !showOptions,
             }
           )}
         >
