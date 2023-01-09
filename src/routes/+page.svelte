@@ -64,7 +64,8 @@
               {timezone} -
             </span>
             <span>
-              <Clock {timezone} format={'MMM DD - hh:mm a'} interval={1000} />
+              <!-- TODO: check if interval needs to be changed -->
+              <Clock {timezone} format={'MMM DD - hh:mm a'} interval={10 * 1000} />
             </span>
           </div>
           <button
