@@ -1,6 +1,7 @@
 export const timezones = Intl as unknown as { supportedValuesOf: (name: string) => string[] };
 
-// some timezones aren't available in dayjs
+// TODO: check other timezones that aren't available in dayjs with looping
+/* some timezones aren't available in dayjs */
 export const invalidTimezones = ['Americana/Indiana'].map((timezone) => {
   return timezone.split('/')[1].toLowerCase();
 });

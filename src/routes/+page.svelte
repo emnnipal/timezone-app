@@ -25,12 +25,7 @@
   </div>
   <div class="grid grid-cols-[auto_1fr] items-center gap-2 font-semibold">
     <span> Current Timezone: </span>
-    <SelectTimezone
-      {selectedTimezone}
-      onSelect={(value) => {
-        selectedTimezone = value;
-      }}
-    />
+    <SelectTimezone bind:selectedTimezone />
   </div>
   <div class="flex flex-col gap-3 border border-gray-100 p-4">
     <div class="flex items-center">

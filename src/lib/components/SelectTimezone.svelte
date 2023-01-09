@@ -6,7 +6,7 @@
   import XMark from '$lib/icons/XMark.svelte';
 
   export let selectedTimezone = '';
-  export let onSelect: (timezone: string) => void;
+  export let onSelect: (timezone: string) => void = () => null;
   export let placeholder = 'Select timezone';
   export let showClearButton = true;
 
