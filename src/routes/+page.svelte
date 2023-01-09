@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { browser } from '$app/environment';
   import Clock from '$lib/components/Clock.svelte';
   import SelectTimezone from '$lib/components/SelectTimezone.svelte';
   import { LocalStorageKey } from '$lib/enums/local-storage';
@@ -20,7 +19,7 @@
   }
 </script>
 
-<div class="flex min-w-[500px] flex-col gap-5 rounded p-4">
+<div class="flex min-w-[300px] max-w-[500px] flex-col gap-5 rounded p-4">
   <div class="font-semibold">
     Time: <Clock timezone={selectedTimezone} />
   </div>
@@ -47,10 +46,9 @@
         <div
           class="flex place-content-between items-center rounded border border-gray-300 py-4 px-4"
         >
-          <div>
-            {i + 1}.
+          <div class="flex flex-col sm:flex-row">
             <span class="font-semibold">
-              {timezone} -
+              {i + 1}. {timezone} -
             </span>
             <span>
               <!-- TODO: check if interval needs to be changed -->
