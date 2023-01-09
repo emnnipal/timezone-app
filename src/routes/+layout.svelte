@@ -9,6 +9,11 @@
   dayjs.extend(timezone);
 </script>
 
+<svelte:head>
+  <title>Timezone App</title>
+  <meta name="description" content="Svelte demo app" />
+</svelte:head>
+
 <div class="svelte-app h-full">
   <section class="flex flex-col items-center gap-4">
     <div

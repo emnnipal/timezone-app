@@ -6,7 +6,7 @@
   import TrashCanRegular from '$lib/icons/TrashCanRegular.svelte';
   import autoAnimate from '$lib/utils/auto-animate';
   import { LocalStorageUtil } from '$lib/utils/local-storage';
-  import { uniq } from 'lodash';
+  import uniq from 'lodash/uniq';
 
   let selectedTimezone: string;
   let recentTimezones: string[] = [];
@@ -30,11 +30,6 @@
     }
   }
 </script>
-
-<svelte:head>
-  <title>Timezone App</title>
-  <meta name="description" content="Svelte demo app" />
-</svelte:head>
 
 <div class="flex min-w-[500px] flex-col gap-5 rounded p-4">
   <div class="font-semibold">

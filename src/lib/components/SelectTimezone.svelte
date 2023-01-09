@@ -2,11 +2,13 @@
   import { clickOutside } from '$lib/utils/svelte-helpers';
   import classNames from 'classnames';
   import { groupedTimezones } from '$lib/utils/timezones';
-  import { lowerCase } from 'lodash';
+  import lowerCase from 'lodash/lowerCase';
+  import XMark from '$lib/icons/XMark.svelte';
 
   export let selectedTimezone = '';
   export let onSelect: (timezone: string) => void;
   export let placeholder = 'Select timezone';
+  export let showClearButton = true;
 
   let showOptions = false;
   let searchValue = selectedTimezone;
@@ -19,7 +21,7 @@
       let result = [];
       for (const [region, cities] of groupedTimezones) {
         const filteredCities = cities.filter((city) =>
-          lowerCase(`${region}/${city}`).includes((searchValue || '').toLowerCase())
+          lowerCase(`${region}/${city}`).includes(lowerCase(searchValue || ''))
         );
         if (filteredCities.length > 0) {
           result.push([region, filteredCities]);
@@ -44,22 +46,40 @@
     showOptions = false;
   }}
 >
-  <input
-    on:input={() => {
-      showOptions = true;
-    }}
-    on:click={() => {
-      showOptions = true;
-    }}
-    class={classNames(
-      'z-0 w-full rounded border border-gray-400 p-2 px-4 font-semibold placeholder:font-normal',
-      {
-        'border-gray-50': !!searchValue,
-      }
-    )}
-    bind:value={searchValue}
-    {placeholder}
-  />
+  <div class="relative">
+    <input
+      on:input={() => {
+        showOptions = true;
+      }}
+      on:click={() => {
+        showOptions = true;
+      }}
+      class={classNames(
+        'z-0 w-full rounded border border-gray-400 p-2 px-4 font-semibold placeholder:font-normal',
+        {
+          'border-gray-50': !!searchValue,
+        }
+      )}
+      bind:value={searchValue}
+      {placeholder}
+    />
+    {#if showClearButton}
+      <button
+        class={classNames(
+          'absolute top-3 right-4 w-3 cursor-pointer  transition-all duration-200 ease-in-out hover:scale-110 hover:fill-gray-900',
+          {
+            'fill-gray-600': !!searchValue,
+            'fill-gray-200': !searchValue,
+          }
+        )}
+        on:click={() => {
+          searchValue = '';
+        }}
+      >
+        <XMark />
+      </button>
+    {/if}
+  </div>
 
   <div
     class={classNames(
