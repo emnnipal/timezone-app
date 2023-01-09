@@ -1,13 +1,16 @@
 export const timezones = Intl as unknown as { supportedValuesOf: (name: string) => string[] };
 
 // some timezones aren't available in dayjs
-const invalidTimezones = ['Americana/Indiana'].map((timezone) => {
+export const invalidTimezones = ['Americana/Indiana'].map((timezone) => {
   return timezone.split('/')[1].toLowerCase();
 });
 
 export const groupedTimezones = Object.entries(
   timezones.supportedValuesOf('timeZone').reduce((acc, timezone) => {
-    const [region, city] = timezone.split('/');
+    const [region = '', city = ''] = timezone.split('/');
+
+    if (!region || !city) return acc;
+
     const groupedCities = acc[region] || [];
 
     if (!invalidTimezones.includes(city.toLowerCase())) {

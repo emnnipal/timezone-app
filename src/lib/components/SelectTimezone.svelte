@@ -66,7 +66,7 @@
     {#if showClearButton}
       <button
         class={classNames(
-          'absolute top-3 right-4 w-3 cursor-pointer  transition-all duration-200 ease-in-out hover:scale-110 hover:fill-gray-900',
+          'absolute top-0 right-0 cursor-pointer rounded-full py-3 px-4 transition-all duration-200 ease-in-out hover:scale-110 hover:fill-gray-900',
           {
             'fill-gray-600': !!searchValue,
             'fill-gray-200': !searchValue,
@@ -76,7 +76,7 @@
           searchValue = '';
         }}
       >
-        <XMark />
+        <XMark className="w-3" />
       </button>
     {/if}
   </div>
