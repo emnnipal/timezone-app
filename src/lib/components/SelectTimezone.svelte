@@ -55,7 +55,7 @@
         showOptions = true;
       }}
       class={classNames(
-        'z-0 w-full rounded border border-gray-400 p-2 px-4 font-semibold placeholder:font-normal',
+        'z-0 w-full rounded border border-gray-400 p-2 px-4 font-semibold outline-none placeholder:font-normal',
         {
           'border-gray-50': !!searchValue,
         }
