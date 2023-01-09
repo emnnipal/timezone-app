@@ -1,10 +1,14 @@
+import { browser } from '$app/environment';
+
+const storage = browser ? localStorage : null;
+
 export class LocalStorageUtil {
   static set(key: string, value: unknown): void {
-    localStorage.setItem(key, JSON.stringify(value));
+    storage?.setItem(key, JSON.stringify(value));
   }
 
   static get<T>(key: string): T {
-    const storedValue = localStorage.getItem(key);
+    const storedValue = storage?.getItem(key);
 
     try {
       return JSON.parse(storedValue || JSON.stringify(null));
@@ -15,10 +19,10 @@ export class LocalStorageUtil {
   }
 
   static getAll(): { [key: string]: unknown } {
-    return localStorage as { [key: string]: unknown };
+    return storage as { [key: string]: unknown };
   }
 
   static clear(): void {
-    localStorage.clear();
+    storage?.clear();
   }
 }

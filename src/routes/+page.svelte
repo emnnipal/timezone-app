@@ -8,26 +8,15 @@
   import { LocalStorageUtil } from '$lib/utils/local-storage';
   import uniq from 'lodash/uniq';
 
-  let selectedTimezone: string;
-  let recentTimezones: string[] = [];
+  let selectedTimezone: string = LocalStorageUtil.get(LocalStorageKey.AppTimezone) || 'Asia/Manila';
+  let recentTimezones: string[] = LocalStorageUtil.get(LocalStorageKey.RecentTimezones) || [];
 
   $: {
-    if (browser) {
-      recentTimezones = LocalStorageUtil.get(LocalStorageKey.RecentTimezones) || [];
-      selectedTimezone = LocalStorageUtil.get(LocalStorageKey.AppTimezone) || 'Asia/Manila';
-    }
+    LocalStorageUtil.set(LocalStorageKey.RecentTimezones, recentTimezones);
   }
 
   $: {
-    if (browser) {
-      LocalStorageUtil.set(LocalStorageKey.RecentTimezones, recentTimezones);
-    }
-  }
-
-  $: {
-    if (browser) {
-      LocalStorageUtil.set(LocalStorageKey.AppTimezone, selectedTimezone);
-    }
+    LocalStorageUtil.set(LocalStorageKey.AppTimezone, selectedTimezone);
   }
 </script>
 
