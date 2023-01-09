@@ -16,7 +16,8 @@
   ],
   "search.exclude": {
     "**/node_modules": true,
-    "pnpm-lock.yaml": true
+    "pnpm-lock.yaml": true,
+    ".svelte-kit": true
   },
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode"
