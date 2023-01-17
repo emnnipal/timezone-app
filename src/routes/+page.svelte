@@ -10,13 +10,8 @@
   let selectedTimezone: string = LocalStorageUtil.get(LocalStorageKey.AppTimezone) || 'Asia/Manila';
   let recentTimezones: string[] = LocalStorageUtil.get(LocalStorageKey.RecentTimezones) || [];
 
-  $: {
-    LocalStorageUtil.set(LocalStorageKey.RecentTimezones, recentTimezones);
-  }
-
-  $: {
-    LocalStorageUtil.set(LocalStorageKey.AppTimezone, selectedTimezone);
-  }
+  $: LocalStorageUtil.set(LocalStorageKey.RecentTimezones, recentTimezones);
+  $: LocalStorageUtil.set(LocalStorageKey.AppTimezone, selectedTimezone);
 </script>
 
 <div class="flex min-w-[300px] max-w-[500px] flex-col gap-5 rounded p-4">
