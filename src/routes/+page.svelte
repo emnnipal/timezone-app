@@ -1,12 +1,15 @@
 <script lang="ts">
-  import Clock from '$lib/components/Clock.svelte';
-  import SelectTimezone from '$lib/components/SelectTimezone.svelte';
+  import Clock from '$lib/components/clock.svelte';
+  import DateTimePicker from '$lib/components/date-time-picker.svelte';
+  import SelectTimezone from '$lib/components/select-timezone.svelte';
   import { LocalStorageKey } from '$lib/enums/local-storage';
-  import TrashCanRegular from '$lib/icons/TrashCanRegular.svelte';
+  import TrashCanRegular from '$lib/icons/trash-can-regular.svelte';
   import autoAnimate from '$lib/utils/auto-animate';
   import { LocalStorageUtil } from '$lib/utils/local-storage';
+  import dayjs from 'dayjs';
   import uniq from 'lodash/uniq';
 
+  let dateTimeValue: string = dayjs().format('YYYY-MM-DDTHH:mm');
   let selectedTimezone: string = LocalStorageUtil.get(LocalStorageKey.AppTimezone) || 'Asia/Manila';
   let recentTimezones: string[] = LocalStorageUtil.get(LocalStorageKey.RecentTimezones) || [];
 
@@ -16,7 +19,7 @@
 
 <div class="flex min-w-[300px] max-w-[500px] flex-col gap-5 rounded p-4">
   <div class="font-semibold">
-    Time: <Clock timezone={selectedTimezone} />
+    <DateTimePicker label="Set time" bind:value={dateTimeValue} />
   </div>
   <div class="grid grid-cols-[auto_1fr] items-center gap-2 font-semibold">
     <span> Current Timezone: </span>
@@ -42,7 +45,7 @@
             </span>
             <span>
               <!-- TODO: check if interval needs to be changed -->
-              <Clock {timezone} format={'MMM DD - hh:mm a'} interval={10 * 1000} />
+              <Clock {timezone} dateTime={dateTimeValue} format={'MMM DD - hh:mm a'} />
             </span>
           </div>
           <button

@@ -3,7 +3,7 @@
   import classNames from 'classnames';
   import { groupedTimezones } from '$lib/utils/timezones';
   import lowerCase from 'lodash/lowerCase';
-  import XMark from '$lib/icons/XMark.svelte';
+  import XMark from '$lib/icons/x-mark.svelte';
 
   export let selectedTimezone = '';
   export let onSelect: (timezone: string) => void = () => null;
