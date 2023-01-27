@@ -17,7 +17,7 @@
 <div class="svelte-app h-full">
   <section class="relative flex flex-col items-center gap-4">
     <div
-      class="sticky flex w-full justify-center border border-gray-200 py-3 text-lg font-semibold shadow-md"
+      class="sticky top-0 z-20 flex w-full justify-center border border-gray-200 bg-white py-3 text-lg font-semibold shadow-md"
     >
       <AppLogo className="mr-3 w-6" />
       Timezone App

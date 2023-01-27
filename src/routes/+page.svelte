@@ -22,15 +22,18 @@
   $: LocalStorageUtil.set(LocalStorageKey.AppTimezone, selectedTimezone);
 </script>
 
-<div class="flex w-full min-w-[300px] max-w-[600px] flex-col gap-5 rounded p-4">
-  <div class="font-semibold">
-    <DateTimePicker label="Set time" bind:value={dateTimeValue} />
+<div class="relative w-full min-w-[300px] max-w-[600px] rounded">
+  <div class="sticky top-12 z-10 flex flex-col gap-5 bg-white p-4">
+    <div class="font-semibold">
+      <DateTimePicker label="Set time" bind:value={dateTimeValue} />
+    </div>
+    <div class="grid grid-cols-[auto_1fr] items-center gap-2 font-semibold">
+      <span> Set timezone: </span>
+      <SelectTimezone bind:selectedTimezone />
+    </div>
   </div>
-  <div class="grid grid-cols-[auto_1fr] items-center gap-2 font-semibold">
-    <span> Set timezone: </span>
-    <SelectTimezone bind:selectedTimezone />
-  </div>
-  <div class="flex flex-col gap-3 border border-gray-100 p-4">
+
+  <div class="m-4 flex flex-col gap-3 border border-gray-100 p-4">
     <div class="flex items-center">
       <SelectTimezone
         onSelect={(value) => {
