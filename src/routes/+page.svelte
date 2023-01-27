@@ -22,7 +22,7 @@
   $: LocalStorageUtil.set(LocalStorageKey.AppTimezone, selectedTimezone);
 </script>
 
-<div class="flex min-w-[300px] max-w-[500px] flex-col gap-5 rounded p-4">
+<div class="flex w-full min-w-[300px] max-w-[600px] flex-col gap-5 rounded p-4">
   <div class="font-semibold">
     <DateTimePicker label="Set time" bind:value={dateTimeValue} />
   </div>
@@ -44,18 +44,20 @@
         <div
           class="flex place-content-between items-center rounded border border-gray-300 py-4 px-4"
         >
-          <div class="flex flex-col sm:flex-row">
-            <span class="font-semibold">
-              {i + 1}. {timezone} -
-            </span>
-            <span>
-              <!-- TODO: check if interval needs to be changed -->
+          <div class="grid grid-cols-[auto_1fr] gap-2 sm:grid-cols-[auto_1fr_auto]">
+            <div class="font-semibold">
+              {i + 1}.
+            </div>
+            <div class="flex gap-4 font-semibold">
+              {timezone} <span class="hidden sm:block">-</span>
+            </div>
+            <div class="col-[2/2] sm:col-[3/3]">
               <Clock
                 {timezone}
                 dateTime={derivedDateTimeWithTimezone}
                 format={'MMM DD - hh:mm a'}
               />
-            </span>
+            </div>
           </div>
           <button
             class="w-4 cursor-pointer fill-red-500 transition-all duration-200 ease-in-out hover:scale-125"
