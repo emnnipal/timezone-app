@@ -16,8 +16,6 @@
   onMount(() => {
     if (!interval) return;
     timer = setInterval(() => {
-      // const localTime = dayjs().utc().tz(localTimezone).format();
-      // console.log('localTimezone', localTimezone, localTime);
       time = dayjs(dateTime).tz(timezone).format(format);
     }, interval);
 
