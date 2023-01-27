@@ -1,6 +1,6 @@
 {
   "name": "timezone-app",
-  "version": "0.1.12",
+  "version": "0.2.0",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
