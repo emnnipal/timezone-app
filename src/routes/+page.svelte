@@ -39,6 +39,7 @@
         onSelect={(value) => {
           recentTimezones = uniq([value, ...recentTimezones].slice(0, 10));
         }}
+        clearOnSelect
       />
     </div>
     <div class="font-semibold">Timezones:</div>

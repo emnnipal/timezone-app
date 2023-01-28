@@ -9,6 +9,7 @@
   export let onSelect: (timezone: string) => void = () => null;
   export let placeholder = 'Select timezone';
   export let showClearButton = true;
+  export let clearOnSelect = false;
 
   let showOptions = false;
   let searchValue = selectedTimezone;
@@ -34,7 +35,7 @@
   const handleClick = (region: string, city: string) => {
     showOptions = false;
     selectedTimezone = `${region}/${city}`;
-    searchValue = selectedTimezone;
+    searchValue = clearOnSelect ? '' : selectedTimezone;
     onSelect(selectedTimezone);
   };
 </script>
